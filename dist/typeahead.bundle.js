@@ -1396,7 +1396,7 @@
             this.isActivated = false;
             this.autoselect = !!o.autoselect;
             this.minLength = _.isNumber(o.minLength) ? o.minLength : 1;
-            this.$node = buildDomStructure(o.input, o.withHint);
+            this.$node = buildDomStructure(o.input, o.withHint, o.cssOverrides);
             $menu = this.$node.find(".tt-dropdown-menu");
             $input = this.$node.find(".tt-input");
             $hint = this.$node.find(".tt-hint");
@@ -1583,8 +1583,11 @@
             }
         });
         return Typeahead;
-        function buildDomStructure(input, withHint) {
+        function buildDomStructure(input, withHint, cssOverrides) {
             var $input, $wrapper, $dropdown, $hint;
+            if (cssOverrides && typeof cssOverrides === "object" && !$.isEmptyObject(cssOverrides) && Object.keys(cssOverrides).length > 0) {
+                $.extend(true, css, cssOverrides);
+            }
             $input = $(input);
             $wrapper = $(html.wrapper).css(css.wrapper);
             $dropdown = $(html.dropdown).css(css.dropdown);
