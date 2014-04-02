@@ -59,6 +59,10 @@
       <div class="typeahead-wrapper">
         <input class="mixed" type="text" placeholder="mixed">
       </div>
+
+      <div class="typeahead-wrapper">
+        <input class="css-overrides" type="text" placeholder="css overrides">
+      </div>
     </div>
     </div>
 
@@ -126,6 +130,19 @@
 
       $('.states').typeahead({
         highlight: true
+      },
+      {
+        displayKey: 'val',
+        source: states.ttAdapter()
+      });
+
+      $('.css-overrides').typeahead({
+        highlight: true,
+        cssOverrides: {
+          dropdown: {
+            zIndex: '3000'
+          }
+        }
       },
       {
         displayKey: 'val',

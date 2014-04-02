@@ -1093,7 +1093,8 @@
                         withHint: _.isUndefined(o.hint) ? true : !!o.hint,
                         minLength: o.minLength,
                         autoselect: o.autoselect,
-                        datasets: datasets
+                        datasets: datasets,
+                        cssOverrides: o.cssOverrides
                     });
                     $input.data(typeaheadKey, typeahead);
                 }
